@@ -8,10 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 
-@Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "user")
+@Entity
 public class User {
 
     @Id
@@ -33,5 +33,7 @@ public class User {
         this.password = password;
     }
 
-
+    public boolean isSamePassword(String password) {
+        return this.password.equals(password);
+    }
 }
