@@ -14,7 +14,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<CommonResponse<UserDTO>> createUser(@RequestBody UserDTO userDTO) {
 
         Long newUserId = userService.createUser(userDTO);

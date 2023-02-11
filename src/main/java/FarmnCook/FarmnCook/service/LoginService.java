@@ -16,7 +16,7 @@ public class LoginService {
     @Transactional(readOnly = true)
     public UserDTO login(UserDTO userDTO) {
         User user = userRepository.findById(userDTO.getUserId()).orElseThrow();
-        if (user.isSamePassword(userDTO.getPassword())) {
+        if (user.equals(userDTO.getPassword())) {
             throw new IllegalArgumentException();
         }
         return UserDTO.entityToDTO(user);

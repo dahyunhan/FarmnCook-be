@@ -18,7 +18,7 @@ public class LoginController {
 
     private final LoginService loginService;
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<CommonResponse<UserDTO>>login(@RequestBody UserDTO userDTO){
         UserDTO user = loginService.login(userDTO);
         CommonResponse<UserDTO> result = CommonResponse.success(user);

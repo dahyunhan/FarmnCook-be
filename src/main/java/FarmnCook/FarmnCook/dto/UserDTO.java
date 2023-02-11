@@ -24,6 +24,7 @@ public class UserDTO {
                 .userId(entity.getId())
                 .email(entity.getEmail())
                 .name(entity.getName())
+                .password(entity.getPassword())
                 .build();
     }
 
