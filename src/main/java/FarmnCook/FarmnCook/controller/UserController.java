@@ -1,6 +1,7 @@
 package FarmnCook.FarmnCook.controller;
 
 import FarmnCook.FarmnCook.CommonResponse;
+import FarmnCook.FarmnCook.dto.RequestUserDTO;
 import FarmnCook.FarmnCook.dto.UserDTO;
 import FarmnCook.FarmnCook.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,15 @@ public class UserController {
 
         UserDTO response = userService.getOneUser(userId);
         CommonResponse<UserDTO> result = CommonResponse.success(response);
+        return ResponseEntity.ok(result);
+    }
+
+    @PutMapping("/update/{accountId}")
+    public ResponseEntity<CommonResponse<RequestUserDTO>>updateUsers(@PathVariable(name = "accountId") Long userId ,@RequestBody RequestUserDTO requestUserDTO){
+
+
+        Long response = userService.updateUsers(userId,requestUserDTO);
+        CommonResponse<RequestUserDTO> result = CommonResponse.success(response);
         return ResponseEntity.ok(result);
     }
 

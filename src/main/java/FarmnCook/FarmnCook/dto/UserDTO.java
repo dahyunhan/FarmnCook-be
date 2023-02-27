@@ -1,7 +1,6 @@
 package FarmnCook.FarmnCook.dto;
 
 import FarmnCook.FarmnCook.entity.User;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,11 +10,11 @@ import lombok.Data;
 public class UserDTO {
 
     private Long userId;
-    @NotBlank
+
     private String email;
-    @NotBlank
+
     private String name;
-    @NotBlank
+
     private String password;
 
 

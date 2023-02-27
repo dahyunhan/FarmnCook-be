@@ -1,5 +1,6 @@
 package FarmnCook.FarmnCook.service;
 
+import FarmnCook.FarmnCook.dto.RequestUserDTO;
 import FarmnCook.FarmnCook.dto.UserDTO;
 import FarmnCook.FarmnCook.entity.User;
 import FarmnCook.FarmnCook.repository.UserRepository;
@@ -37,5 +38,14 @@ public class UserService {
 
         return UserDTO.entityToDTO(getUser);
 
+    }
+    @Transactional
+    public Long updateUsers(Long userId, RequestUserDTO request){
+        User user = userRepository.findById(userId).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+        user.changeEmail(request.getEmail());
+        user.changePassword(request.getPassword());
+        userRepository.save(user);
+
+        return user.getId();
     }
 }
