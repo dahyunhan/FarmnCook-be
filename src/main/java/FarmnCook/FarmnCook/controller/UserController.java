@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/account")
 @RequiredArgsConstructor
@@ -33,11 +35,18 @@ public class UserController {
     }
 
     @PutMapping("/update/{accountId}")
-    public ResponseEntity<CommonResponse<RequestUserDTO>>updateUsers(@PathVariable(name = "accountId") Long userId ,@RequestBody RequestUserDTO requestUserDTO){
+    public ResponseEntity<CommonResponse<RequestUserDTO>> updateUsers(@PathVariable(name = "accountId") Long userId, @RequestBody RequestUserDTO requestUserDTO) {
 
 
-        Long response = userService.updateUsers(userId,requestUserDTO);
+        Long response = userService.updateUsers(userId, requestUserDTO);
         CommonResponse<RequestUserDTO> result = CommonResponse.success(response);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping()
+    public ResponseEntity<CommonResponse<UserDTO>> getAllUser() {
+        List<UserDTO> response = userService.getAllUser();
+        CommonResponse<UserDTO> result = CommonResponse.success(response);
         return ResponseEntity.ok(result);
     }
 
